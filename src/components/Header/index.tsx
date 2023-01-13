@@ -1,6 +1,6 @@
-import { HeaderContainer, HeaderContent } from "components/Header/styles";
-
 import logoImage from "assets/svg/logo.svg";
+
+import { HeaderContainer, HeaderContent } from "./styles";
 
 export function Header() {
   return (
