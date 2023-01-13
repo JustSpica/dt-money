@@ -36,6 +36,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
 
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
 
     border: 0;
