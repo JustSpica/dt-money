@@ -1,5 +1,7 @@
 import logoImage from "assets/svg/logo.svg";
 
+import { Button } from "components";
+
 import { HeaderContainer, HeaderContent } from "./styles";
 
 export function Header() {
@@ -7,7 +9,7 @@ export function Header() {
     <HeaderContainer>
       <HeaderContent>
         <img src={logoImage} />
-        <button>Nova transação</button>
+        <Button>Nova transação</Button>
       </HeaderContent>
     </HeaderContainer>
   );
