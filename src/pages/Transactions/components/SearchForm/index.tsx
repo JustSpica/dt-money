@@ -8,7 +8,7 @@ export function SearchForm() {
   return (
     <SearchFormContainer>
       <TextField type="text" placeholder="Busque por transações" />
-      <Button>
+      <Button variant="outline">
         <MagnifyingGlass size={20} />
         Buscar
       </Button>
