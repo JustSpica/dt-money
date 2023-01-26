@@ -6,6 +6,8 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { Button, TextField } from "components";
 
+import { useTransactions } from "contexts/TransactionsContext";
+
 import {
   CloseButton,
   Content,
@@ -24,12 +26,25 @@ const formSchema = zod.object({
 type NewTransactionFormType = zod.infer<typeof formSchema>;
 
 export function Modal() {
-  const { control, register, handleSubmit } = useForm<NewTransactionFormType>({
-    resolver: zodResolver(formSchema),
-  });
+  const { createNewTransaction } = useTransactions();
+
+  const { control, register, reset, handleSubmit } =
+    useForm<NewTransactionFormType>({
+      resolver: zodResolver(formSchema),
+    });
 
   function handleCreateNewTransaction(data: NewTransactionFormType) {
-    console.log(data);
+    const { category, description, price, type } = data;
+
+    createNewTransaction({
+      category,
+      createdAt: new Date(),
+      description,
+      price,
+      type,
+    });
+
+    reset();
   }
 
   return (
