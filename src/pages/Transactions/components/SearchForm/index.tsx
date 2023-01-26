@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button, TextField } from "components";
 
+import { useTransactions } from "contexts/TransactionsContext";
+
 import { SearchFormContainer } from "./styles";
 
 const formSchema = zod.object({
@@ -14,16 +16,20 @@ const formSchema = zod.object({
 type SearchFormType = zod.infer<typeof formSchema>;
 
 export function SearchForm() {
-  const { register, handleSubmit } = useForm<SearchFormType>({
+  const { fetchTransactions } = useTransactions();
+
+  const { register, handleSubmit, formState } = useForm<SearchFormType>({
     defaultValues: {
       query: "",
     },
     resolver: zodResolver(formSchema),
   });
 
-  function handleSearchTransactions(data: SearchFormType) {
-    console.log(data);
+  async function handleSearchTransactions(data: SearchFormType) {
+    await fetchTransactions(data.query);
   }
+
+  const { isSubmitting } = formState;
 
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
@@ -32,7 +38,7 @@ export function SearchForm() {
         placeholder="Busque por transações"
         {...register("query")}
       />
-      <Button type="submit" variant="outline">
+      <Button disabled={isSubmitting} type="submit" variant="outline">
         <MagnifyingGlass size={20} />
         Buscar
       </Button>
