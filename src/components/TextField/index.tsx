@@ -1,9 +1,12 @@
-import { InputHTMLAttributes } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 
 import { TextFieldContainer } from "./styles";
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-export function TextField(props: TextFieldProps) {
-  return <TextFieldContainer {...props} />;
-}
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+  (props, ref) => {
+    return <TextFieldContainer ref={ref} {...props} />;
+  },
+);
+TextField.displayName = "TextField";

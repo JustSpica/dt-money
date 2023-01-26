@@ -1,4 +1,7 @@
 import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
+import { Controller, useForm } from "react-hook-form";
+import * as zod from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { Button, TextField } from "components";
@@ -11,7 +14,24 @@ import {
   TransactionTypeContainer,
 } from "./styles";
 
+const formSchema = zod.object({
+  description: zod.string(),
+  price: zod.number(),
+  category: zod.string(),
+  type: zod.enum(["income", "outcome"]),
+});
+
+type NewTransactionFormType = zod.infer<typeof formSchema>;
+
 export function Modal() {
+  const { control, register, handleSubmit } = useForm<NewTransactionFormType>({
+    resolver: zodResolver(formSchema),
+  });
+
+  function handleCreateNewTransaction(data: NewTransactionFormType) {
+    console.log(data);
+  }
+
   return (
     <DialogPrimitive.Portal>
       <Overlay />
@@ -20,20 +40,44 @@ export function Modal() {
         <CloseButton>
           <X size={24} />
         </CloseButton>
-        <form>
-          <TextField type="text" placeholder="Descrição" required />
-          <TextField type="number" placeholder="Preço" required />
-          <TextField type="text" placeholder="Categoria" required />
-          <TransactionTypeContainer>
-            <RadioButtonType value="income" variant="income">
-              <ArrowCircleUp size={24} />
-              Entrada
-            </RadioButtonType>
-            <RadioButtonType value="outcome" variant="outcome">
-              <ArrowCircleDown size={24} />
-              Saída
-            </RadioButtonType>
-          </TransactionTypeContainer>
+        <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <TextField
+            type="text"
+            placeholder="Descrição"
+            required
+            {...register("description")}
+          />
+          <TextField
+            type="number"
+            placeholder="Preço"
+            required
+            {...register("price", { valueAsNumber: true })}
+          />
+          <TextField
+            type="text"
+            placeholder="Categoria"
+            required
+            {...register("category")}
+          />
+          <Controller
+            control={control}
+            name="type"
+            render={({ field }) => (
+              <TransactionTypeContainer
+                onValueChange={field.onChange}
+                value={field.value}
+              >
+                <RadioButtonType value="income" variant="income">
+                  <ArrowCircleUp size={24} />
+                  Entrada
+                </RadioButtonType>
+                <RadioButtonType value="outcome" variant="outcome">
+                  <ArrowCircleDown size={24} />
+                  Saída
+                </RadioButtonType>
+              </TransactionTypeContainer>
+            )}
+          />
           <Button type="submit">Cadastrar</Button>
         </form>
       </Content>
