@@ -13,7 +13,6 @@ function App() {
       <TransactionProvider>
         <Transactions />
       </TransactionProvider>
-
       <GlobalStyle />
     </ThemeProvider>
   );
