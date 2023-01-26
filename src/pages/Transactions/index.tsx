@@ -2,6 +2,8 @@ import { Header, Summary } from "components";
 
 import { useTransactions } from "contexts/TransactionsContext";
 
+import { dateFormatter, priceFormatter } from "util/formatter";
+
 import { SearchForm } from "./components/SearchForm";
 
 import {
@@ -26,13 +28,10 @@ export function Transactions() {
               <tr key={transaction.id}>
                 <td>{transaction.description}</td>
                 <PriceHighLight variant={transaction.type}>
-                  {Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(transaction.price)}
+                  {priceFormatter.format(transaction.price)}
                 </PriceHighLight>
                 <td>{transaction.category}</td>
-                <td>{transaction.createdAt}</td>
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
               </tr>
             ))}
           </tbody>
