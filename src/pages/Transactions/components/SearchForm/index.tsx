@@ -16,7 +16,9 @@ const formSchema = zod.object({
 type SearchFormType = zod.infer<typeof formSchema>;
 
 export function SearchForm() {
-  const { fetchTransactions } = useTransactions();
+  const fetchTransactions = useTransactions(context => {
+    return context.fetchTransactions;
+  });
 
   const { register, handleSubmit, formState } = useForm<SearchFormType>({
     defaultValues: {

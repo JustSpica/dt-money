@@ -7,7 +7,9 @@ import { priceFormatter } from "util/formatter";
 import { SummaryCard, SummaryContainer } from "./styles";
 
 export function Summary() {
-  const { transactions } = useTransactions();
+  const transactions = useTransactions(context => {
+    return context.transactions;
+  });
 
   const summary = transactions.reduce(
     (acc, transaction) => {

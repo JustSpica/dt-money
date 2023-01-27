@@ -26,7 +26,9 @@ const formSchema = zod.object({
 type NewTransactionFormType = zod.infer<typeof formSchema>;
 
 export function Modal() {
-  const { createNewTransaction } = useTransactions();
+  const createNewTransaction = useTransactions(context => {
+    return context.createNewTransaction;
+  });
 
   const { control, register, reset, handleSubmit } =
     useForm<NewTransactionFormType>({

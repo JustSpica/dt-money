@@ -13,7 +13,9 @@ import {
 } from "./styles";
 
 export function Transactions() {
-  const { transactions } = useTransactions();
+  const transactions = useTransactions(context => {
+    return context.transactions;
+  });
 
   return (
     <div>
