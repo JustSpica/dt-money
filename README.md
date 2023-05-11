@@ -1,38 +1,51 @@
-![background](https://user-images.githubusercontent.com/75824415/222419313-05753b81-52c0-41ed-827c-514d94288e7a.png)
+![DT Monet](https://github.com/JustSpica/dt-money/assets/75824415/c267940a-8620-4096-baa7-164235389b15)
 
 # DT Money
-## 📢 Deploy on Vercel
-**🚧 Esse projeto ainda não foi publicado em produção. 🚧**
+[![Author](https://img.shields.io/badge/author-JustSpica-00875F?style=flat-square)](https://github.com/JustSpica)
+[![Languages](https://img.shields.io/github/languages/count/JustSpica/dt-money?color=00875F&style=flat-square)](#)
+[![Stars](https://img.shields.io/github/stars/JustSpica/dt-money?color=00875F&style=flat-square)](https://github.com/JustSpica/coffee-delivery/stargazers)
+[![teste](https://img.shields.io/github/last-commit/JustSpica/dt-money?color=00875F&style=flat-square)](#)
+
+## 📢 Deploy
+**🚧 Esse projeto ainda não foi publicado. 🚧**
 
 ## 📚 Descrição
-DT Money é uma plataforma simples de finanças feita em React, com funcionalidades para registrar entradas e saídas, juntamente com a categoria de cada transação. 
-Esse projeto foi desenvolvido durante o módulo de **Consumo de API** do curso Ignite, oferecido pela escola de programação Rocketseat.
+DT Money é uma simples plataforma de finanças feita em React, com funcionalidades para registrar entradas e saídas, juntamente com a categoria de cada transação. 
+Esse projeto foi desenvolvido durante o módulo de "Consumo de API" do curso Ignite, oferecido pela escola de programação Rocketseat.
 
 ## 🌟 Tecnologias
-- [ ] React 18
-- [ ] Typescript
-- [ ] Vite
-- [ ] Context API
-- [ ] Styled-Components
-- [ ] React-hook-form
-- [ ] Axios
-- [ ] RadixUI
-- [ ] Zod
-- [ ] ESLint
-- [ ] Prettier
+- [X] [React 18](https://react.dev/)
+- [X] [Typescript](https://www.typescriptlang.org/)
+- [X] [Vite](https://vitejs.dev/)
+- [X] [RadixUI](https://www.radix-ui.com/)
 
-## 🎨 Layout
-O layout das telas foi fornecido integralmente pelos designers da Rocketseat e pode ser encontrado [aqui](https://www.figma.com/community/file/1138814493269096792).
+## 🔨 Ferramentas adicionais
+- [X] Styled-Components
+- [X] React-hook-form
+- [X] Axios
+- [X] Zod
+- [X] ESLint
+- [X] Prettier
 
 ## 🚪 Passos para rodar o projeto
-Você ira precisar ter o [NodeJS](https://nodejs.org/en/) baixado em seu computador para rodar esse projeto e o [Git](https://git-scm.com/downloads) para clonar o repositório.
+Você ira precisar ter o [NodeJS](https://nodejs.org/en/) instalado para rodar esse projeto.
+
+**Clone o projeto e acesse a pasta**
 ```bash
-git clone https://github.com/JustSpica/dt-money.git
+git clone https://github.com/JustSpica/dt-money.git && cd dt-money
+```
+
+**Siga os passos abaixo**
+
+```bash
+# Para instalar as dependências
+$ npm install
+
+# Para rodar a "Fake API" do JSON Server
+$ npm run server 
 
 # Para rodar o projeto em modo de desenvolvimento
-$ npm run server
 $ npm run dev
-
-# Para rodar o projeto em modo de produção.
-$ npm run build
 ```
+
+Feito de 💖 por Guilherme Spica Luiz 👋 [De uma olhada em meu Linkedin](https://www.linkedin.com/in/guilhermespicaluiz)
